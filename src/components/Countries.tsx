@@ -24,10 +24,14 @@ const Countries = () => {
           region,
           capital,
           flags,
-          currency,
+          demonym,
+          // currencies,
+          // language,
         } = country;
         const { official } = name;
         const { svg } = flags;
+        // const { lang } = language;
+
         return (
           <article key={numericCode}>
             <div>
@@ -36,7 +40,9 @@ const Countries = () => {
               <h4>Population: {population}</h4>
               <h4>Region: {region}</h4>
               <h4>Capital: {capital}</h4>
-              <h4>Currency: {currency}</h4>
+              <h4>Demonym: {demonym}</h4>
+              {/* <h4>Currency: {currencies}</h4> */}
+              {/* <h4>Language: {lang}</h4> */}
             </div>
           </article>
         );
