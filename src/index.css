@@ -3,6 +3,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.active {
+  background: dodgerblue;
+}
+
 /* :root {
   --Dark-Blue-Dark-ModeElements: hsl(209, 23%, 22%);
   --Very-Dark-Blue-DarkModeBackground: hsl(207, 26%, 17%);

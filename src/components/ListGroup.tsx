@@ -1,4 +1,4 @@
-import { MouseEvent } from "react";
+import { useState } from "react";
 
 let people = [
   {
@@ -55,22 +55,27 @@ let people = [
   },
 ];
 
-// people = [];
-const handleClick = (event: MouseEvent) => console.log(event);
+const Cities = ["Tashkent", "Roma", "Milano"];
+interface Props {
+  items: string[];
+  heading: string;
+}
 
-const ListGroup = () => {
-  let selectedIndex = 0;
+const ListGroup = ({ items, heading }: Props) => {
+  const [selectedIndex, setSelectedIndex] = useState(-1);
 
   return (
     <ul role="list" className="divide-y divide-gray-100">
-      {/* {people.length === 0 && <p>No people found</p>} */}
+      <h2>{heading}</h2>
       {people.map((person, index) => (
         <li
           key={person.email}
-          onClick={handleClick}
+          onClick={() => {
+            setSelectedIndex(index);
+          }}
           className={
             selectedIndex === index
-              ? "flex justify-around gap-x-6 py-5 active"
+              ? "flex justify-around  gap-x-6 py-5 active"
               : "flex justify-around gap-x-6 py-5"
           }
         >
