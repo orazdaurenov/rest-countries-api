@@ -1,9 +1,9 @@
-import Countries from "./components/Countries";
+import ListGroup from "./components/ListGroup";
 
 function App() {
   return (
     <>
-      <Countries />
+      <ListGroup />
     </>
   );
 }
