@@ -5,6 +5,6 @@ const config: ThemeConfig = {
   useSystemColorMode: true,
 }
 
-const theme = extendTheme({config})
+const theme = extendTheme({config});
 
-export default theme
+export default theme;
