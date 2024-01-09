@@ -11,8 +11,15 @@ export interface Country {
   population: number;
   region: string;
   capital: string;
-  currencies: { name: string };
+  currencies: Currencies;
   continents: string[];
+}
+export interface Currencies {
+  [currencyCode: string]: Currency;
+}
+
+export interface Currency {
+  name: string;
 }
 
 const CountryList = () => {
