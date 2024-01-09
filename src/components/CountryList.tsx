@@ -2,6 +2,7 @@ import { SimpleGrid, Text } from "@chakra-ui/react";
 import axios, { CanceledError } from "axios";
 import { useEffect, useState } from "react";
 import CountryCard from "./CountryCard";
+import CountryCardSkeleton from "./CountryCardSkeleton";
 
 export interface Country {
   id: string;
@@ -17,14 +18,21 @@ export interface Country {
 const CountryList = () => {
   const [countries, setCountries] = useState<Country[]>([]);
   const [error, setError] = useState("");
+  const [isLoading, setLoading] = useState(false);
+  const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
   useEffect(() => {
     const controller = new AbortController();
+
+    setLoading(true);
     axios
       .get<Country[]>("https://restcountries.com/v3.1/all", {
         signal: controller.signal,
       })
-      .then((res) => setCountries(res.data))
+      .then((res) => {
+        setCountries(res.data);
+        setLoading(false);
+      })
       .catch((err) => {
         if (err instanceof CanceledError) return;
         setError(err.message);
@@ -41,6 +49,8 @@ const CountryList = () => {
         paddingX={5}
         spacing={5}
       >
+        {isLoading &&
+          skeletons.map((skeleton) => <CountryCardSkeleton key={skeleton} />)}
         {countries.map((country) => (
           <CountryCard key={country.id} country={country} />
         ))}
