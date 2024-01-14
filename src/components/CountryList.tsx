@@ -11,8 +11,9 @@ export interface Country {
   population: number;
   region: string;
   capital: string;
-  currencies: Currencies;
   continents: string[];
+  selectedRegion: string | null;
+  currencies?: Currencies;
 }
 export interface Currencies {
   [currencyCode: string]: Currency;

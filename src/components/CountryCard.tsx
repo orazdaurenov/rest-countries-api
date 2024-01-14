@@ -17,6 +17,12 @@ const CountryCard = ({ country }: Props) => {
         <Text>Region: {country.region}</Text>
         <Text>Capital: {country.capital}</Text>
         <Text>Continent: {country.continents}</Text>
+        {country.currencies && (
+          <Text>
+            Currencies:{" "}
+            {Object.values(country.currencies).map((currency) => currency.name)}
+          </Text>
+        )}
       </CardBody>
     </Card>
   );

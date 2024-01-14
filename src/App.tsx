@@ -5,7 +5,7 @@ import RegionSelector from "./components/RegionSelector";
 import { useState } from "react";
 
 function App() {
-  const [selectedRegion, setSelectedRegion] = useState(null);
+  const [selectedRegion, setSelectedRegion] = useState<string | null>(null);
 
   return (
     <>
@@ -14,8 +14,10 @@ function App() {
           <NavBar />
         </GridItem>
         <GridItem rowSpan={2}>
-          <RegionSelector />
-          <CountryList />
+          <RegionSelector
+            onSelectRegion={(regions) => setSelectedRegion(regions)}
+          />
+          <CountryList selectedRegion={selectedRegion} />
         </GridItem>
       </Grid>
     </>
